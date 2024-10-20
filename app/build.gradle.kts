@@ -20,11 +20,13 @@ android {
     }
 
     signingConfigs {
-        create("release") { 
-            // This block will be empty, configuration is done via -P parameters
-        }
+    create("release") {
+        storeFile = file("marvin-J.jks")
+        storePassword = "marvin-J" // Replace with actual password
+        keyAlias = "marvin-J" // Replace with actual key alias
+        keyPassword = "marvin-J" // Replace with actual key password
     }
-
+}
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
