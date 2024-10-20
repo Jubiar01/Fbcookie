@@ -28,10 +28,10 @@ jobs:
         run: ./gradlew assembleDebug
 
       - name: Rename APK
-        run: mv app/build/outputs/apk/debug/*.apk app/karbon-debug.apk
+        run: mv app/build/outputs/apk/debug/*.apk app/fbcookie-debug.apk
 
       - name: Archive APK
         uses: actions/upload-artifact@v3
         with:
-          name: Karbon-Debug
-          path: app/karbon-debug.apk
+          name: FBCookie-Debug
+          path: app/fbcookie-debug.apk
