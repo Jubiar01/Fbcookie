@@ -23,10 +23,10 @@ android {
 
 signingConfigs {
         release {
-            storeFile file("my-release-key.jks") // Path to your keystore
-            storePassword "your_keystore_password"
-            keyAlias "upload_key"
-            keyPassword "your_key_password"
+            storeFile file("marvin-J.jks") // Path to your keystore
+            storePassword "marvin-J"
+            keyAlias "marvin-J"
+            keyPassword "marvin-J"
         }
     
     compileOptions {
