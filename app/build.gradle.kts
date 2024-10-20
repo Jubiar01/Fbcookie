@@ -20,9 +20,8 @@ android {
     }
 
     signingConfigs {
-        release {
-            // Remove hardcoded values here
-            // These will be provided by the CI workflow
+        create("release") { 
+            // This block will be empty, configuration is done via -P parameters
         }
     }
 
@@ -32,10 +31,10 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") { 
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig signingConfigs.release 
+            signingConfig = signingConfigs.getByName("release") 
         }
     }
 
