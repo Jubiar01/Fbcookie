@@ -14,6 +14,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "FB Cookie"
+rootProject.name = "FBCookie"
 
 include(":app")
