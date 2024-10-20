@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/user_agent_chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:singleSelection="true"
+        android:orientation="vertical"
+        app:chipSpacingVertical="8dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/default_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:padding="10dp"
+            app:chipCornerRadius="32dp"
+            android:text="Default" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/custom_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:padding="10dp"
+            app:chipCornerRadius="32dp"
+            android:text="Custom" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_user_agent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter User-Agent"
+            android:inputType="text"
+            android:visibility="gone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ok_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"
+        android:textColor="?attr/colorPrimary"
+        android:backgroundTint="@android:color/transparent"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:text="Save" />
+
+</LinearLayout>

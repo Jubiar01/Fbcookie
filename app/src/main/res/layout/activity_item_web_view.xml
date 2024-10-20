@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent">
+
+    <LinearLayout
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+             android:layout_height="?attr/actionBarSize"
+             android:layout_width="match_parent"
+             android:background="?attr/colorPrimary"
+             app:navigationIcon="@drawable/ic_back"
+             android:id="@+id/toolbar" />
+
+        <WebView
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:id="@+id/webview"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:layout_margin="16dp"
+         android:orientation="horizontal"
+         android:layout_gravity="bottom|end">
+
+        <com.google.android.material.button.MaterialButton
+             android:layout_height="wrap_content"
+             android:layout_width="0dp"
+             android:backgroundTint="@android:color/transparent"
+             android:textColor="?attr/colorPrimary"
+             style="@style/Widget.Material3.Button.OutlinedButton"
+             android:layout_weight="1"
+             android:id="@+id/btn_extract_cookies"
+             android:text="Extract Cookies" />
+
+        <com.google.android.material.button.MaterialButton
+             android:layout_height="wrap_content"
+             android:layout_width="0dp"
+             android:backgroundTint="@android:color/transparent"
+             android:textColor="?attr/colorPrimary"
+             style="@style/Widget.Material3.Button.OutlinedButton"
+             android:layout_weight="1"
+             android:id="@+id/btn_settings"
+             android:text="Settings" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+</FrameLayout>
