@@ -1,34 +1,31 @@
-
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
-    
 }
 
 android {
     namespace = "com.example.fbcookie"
     compileSdk = 34
-    
+
     defaultConfig {
         applicationId = "com.example.fbcookie"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.1"
-        
-        vectorDrawables { 
+
+        vectorDrawables {
             useSupportLibrary = true
         }
     }
 
-signingConfigs {
+    signingConfigs {
         release {
-            storeFile file("marvin-J.jks") // Path to your keystore
-            storePassword "marvin-J"
-            keyAlias "marvin-J"
-            keyPassword "marvin-J"
+            // Remove hardcoded values here
+            // These will be provided by the CI workflow
         }
-    
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -38,15 +35,13 @@ signingConfigs {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release 
         }
     }
 
     buildFeatures {
         viewBinding = true
-        
     }
-    
 }
 
 dependencies {
