@@ -35,17 +35,16 @@ jobs:
         with:
           name: FBCookie-Debug
           path: app/fbcookie-debug.apk
-          build_release_apk:
-          
-  name: Build Release APK
+
+  build_release_apk: 
+    name: Build Release APK
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4   
-
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -54,16 +53,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name:   
- Validate Gradle wrapper
-        uses: gradle/wrapper-validation@v4   
-
-
       - name: Upload keystore
         uses: actions/upload-artifact@v3
         with:
           name: keystore
-          path: app/marvin-J.jks # Replace with the actual path
+          path: app/marvin-J.jks 
 
       - name: Download keystore
         uses: actions/download-artifact@v3
@@ -72,16 +66,16 @@ jobs:
 
       - name: Build release APK
         run: ./gradlew assembleRelease \
-          -Pandroid.signingConfigs.release.storeFile=keystore.jks \
+          -Pandroid.signingConfigs.release.storeFile=marvin-J.jks \
           -Pandroid.signingConfigs.release.storePassword=${{ secrets.KEYSTORE_PASSWORD }} \
           -Pandroid.signingConfigs.release.keyAlias=${{ secrets.KEY_ALIAS }} \
           -Pandroid.signingConfigs.release.keyPassword=${{ secrets.KEY_PASSWORD }}
 
       - name: Rename APK
-        run: mv app/build/outputs/apk/release/*.apk app/karbon-release.apk
+        run: mv app/build/outputs/apk/release/*.apk app/fbcookie-release.apk
 
       - name: Archive APK
         uses: actions/upload-artifact@v3
         with:
-          name: Karbon-Release
-          path: app/karbon-release.apk
+          name: FBCookie-Release
+          path: app/fbcookie-release.apk
