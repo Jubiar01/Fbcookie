@@ -20,6 +20,14 @@ android {
             useSupportLibrary = true
         }
     }
+
+signingConfigs {
+        release {
+            storeFile file("my-release-key.jks") // Path to your keystore
+            storePassword "your_keystore_password"
+            keyAlias "upload_key"
+            keyPassword "your_key_password"
+        }
     
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -30,6 +38,7 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig signingConfigs.release
         }
     }
 
