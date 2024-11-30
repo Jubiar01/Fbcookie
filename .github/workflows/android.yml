@@ -36,7 +36,15 @@ jobs:
           name: FBCookie-Debug
           path: app/fbcookie-debug.apk
 
-  build_release_apk: 
+      - name: Send Telegram notification for Debug Build
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          curl -X POST \
+          -H 'Content-Type: application/json' \
+          -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"🔨 Debug Build Completed\n\nCommit: ${COMMIT_MSG}\nBranch: ${GITHUB_REF#refs/heads/}\nCommit SHA: ${GITHUB_SHA}\"}" \
+          https://api.telegram.org/bot6100263145:AAFOnIcg5Mt8rQlgvCuhdoDkSPqHdVmUdcM/sendMessage
+
+  build_release_apk:
     name: Build Release APK
     runs-on: ubuntu-latest
     steps:
@@ -64,3 +72,11 @@ jobs:
         with:
           name: FBCookie-Release
           path: app/fbcookie-release.apk
+
+      - name: Send Telegram notification for Release Build
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          curl -X POST \
+          -H 'Content-Type: application/json' \
+          -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"📦 Release Build Completed\n\nCommit: ${COMMIT_MSG}\nBranch: ${GITHUB_REF#refs/heads/}\nCommit SHA: ${GITHUB_SHA}\"}" \
+          https://api.telegram.org/bot6100263145:AAFOnIcg5Mt8rQlgvCuhdoDkSPqHdVmUdcM/sendMessage
