@@ -21,7 +21,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Export as String"
+                android:text="Export as Cookie"
                 android:checkable="true" />
 
         </LinearLayout>
@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="Export as JSON"
+                android:text="Export as Appstate"
                 android:checkable="true" />
 
         </LinearLayout>

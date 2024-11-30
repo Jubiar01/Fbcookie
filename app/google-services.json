@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "152668251201",
-    "project_id": "fb-cookie-43b5b",
-    "storage_bucket": "fb-cookie-43b5b.appspot.com"
+    "project_number": "742643153362",
+    "project_id": "fb-cookie-f6370",
+    "storage_bucket": "fb-cookie-f6370.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:152668251201:android:be59a8c9d2430e108b12c0",
+        "mobilesdk_app_id": "1:742643153362:android:d695ec59fc2ad3b3d2700b",
         "android_client_info": {
           "package_name": "com.example.fbcookie"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBz8uZYCPkHrITl0zkQqjk1pa4mO8C3bgw"
+          "current_key": "AIzaSyBWRQ6GhY0fvw7A-M1c4jx282dGzkZLIVU"
         }
       ],
       "services": {
