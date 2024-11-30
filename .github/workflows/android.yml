@@ -32,19 +32,13 @@ jobs:
       - name: Rename APK
         run: mv app/build/outputs/apk/debug/*.apk app/fbcookie-debug.apk
 
-      - name: Archive APK
-        uses: actions/upload-artifact@v3
+      - name: Send Telegram notification with Debug APK
+        uses: appleboy/telegram-action@master
         with:
-          name: FBCookie-Debug
-          path: app/fbcookie-debug.apk
-
-      - name: Send Telegram notification for Debug Build
-        run: |
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-          curl -X POST \
-          -H 'Content-Type: application/json' \
-          -d "{\"chat_id\": \"${{ env.TELEGRAM_CHAT_ID }}\", \"text\": \"🔨 Debug Build Completed\n\nCommit: ${COMMIT_MSG}\nBranch: ${GITHUB_REF#refs/heads/}\nCommit SHA: ${GITHUB_SHA}\"}" \
-          https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage
+          to: ${{ env.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: "🔨 Debug Build Completed\n\nCommit: $(git log -1 --pretty=%B)\nBranch: ${{ github.ref_name }}\nCommit SHA: ${{ github.sha }}\n"
+          document: app/fbcookie-debug.apk
 
   build_release_apk:
     name: Build Release APK
@@ -71,16 +65,10 @@ jobs:
       - name: Rename APK
         run: mv app/build/outputs/apk/release/*.apk app/fbcookie-release.apk
 
-      - name: Archive APK
-        uses: actions/upload-artifact@v3
+      - name: Send Telegram notification with Release APK
+        uses: appleboy/telegram-action@master
         with:
-          name: FBCookie-Release
-          path: app/fbcookie-release.apk
-
-      - name: Send Telegram notification for Release Build
-        run: |
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-          curl -X POST \
-          -H 'Content-Type: application/json' \
-          -d "{\"chat_id\": \"${{ env.TELEGRAM_CHAT_ID }}\", \"text\": \"📦 Release Build Completed\n\nCommit: ${COMMIT_MSG}\nBranch: ${GITHUB_REF#refs/heads/}\nCommit SHA: ${GITHUB_SHA}\"}" \
-          https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage
+          to: ${{ env.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: "📦 Release Build Completed\n\nCommit: $(git log -1 --pretty=%B)\nBranch: ${{ github.ref_name }}\nCommit SHA: ${{ github.sha }}\n"
+          document: app/fbcookie-release.apk
